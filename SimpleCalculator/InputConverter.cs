@@ -4,9 +4,9 @@ namespace SimpleCalculator
 {
     public static class InputConverter
     {
-        public static double ConvertInputToNumeric(string argTextInput)
+        public static bool ConvertInputToNumeric(string argTextInput, out double result)
         {
-            return 0;
+            return double.TryParse(argTextInput, out result);
         }
     }
 }
