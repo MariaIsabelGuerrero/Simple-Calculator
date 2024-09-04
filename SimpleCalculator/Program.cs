@@ -12,18 +12,13 @@ namespace SimpleCalculator
             {
                 // Class to perform actual calculations
                 CalculatorEngine calculatorEngine = new CalculatorEngine();
-                double firstNumber = GetValidNumber("Enter the first number: ");
-                double secondNumber = GetValidNumber("Enter the second number: ");
-                string operation = GetValidOperation();
-                double result = calculatorEngine.Calculate(operation, firstNumber, secondNumber);
-                Console.WriteLine($"Result: {result}");
 
-                //double firstNumber = InputConverter.ConvertInputToNumeric(Console.ReadLine());
-                //double secondNumber = InputConverter.ConvertInputToNumeric(Console.ReadLine());
+                double firstNumber = InputConverter.ConvertInputToNumeric(Console.ReadLine());
+                double secondNumber = InputConverter.ConvertInputToNumeric(Console.ReadLine());
 
                 //string operation = Console.ReadLine();
 
-                //double result = calculatorEngine.Calculate(operation, firstNumber, secondNumber);
+                double result = calculatorEngine.Calculate(operation, firstNumber, secondNumber);
 
                 //Console.WriteLine(result);
 
