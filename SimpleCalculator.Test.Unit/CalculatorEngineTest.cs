@@ -10,23 +10,19 @@ namespace SimpleCalculator.Test.Unit
         [TestMethod]
         public void AddsTwoNumbersAndReturnsValidResultForNonSymbolOpertion()
         {
-
             int number1 = 1;
             int number2 = 2;
             double result = CalculatorOperations.Calculate("add", number1, number2);
             Assert.AreEqual(3, result);
-
         }
 
         [TestMethod]
         public void AddsTwoNumbersAndReturnsValidResultForSymbolOpertion()
         {
-
             int number1 = 1;
             int number2 = 2;
             double result = CalculatorOperations.Calculate("+", number1, number2);
             Assert.AreEqual(3, result);
-
         }
     }
 }

@@ -10,7 +10,8 @@ namespace SimpleCalculator.Test.Unit
         public void ConvertsValidStringInputIntoDouble()
         {
             string inputNumber = "5";
-            double convertedNumber = InputConverter.ConvertInputToNumeric(inputNumber);
+            double convertedNumber;
+            InputConverter.ConvertInputToNumeric(inputNumber, out convertedNumber);
             Assert.AreEqual(5, convertedNumber);
         }
 
@@ -19,7 +20,8 @@ namespace SimpleCalculator.Test.Unit
         public void FailsToConvertsInvalidStringInputIntoDouble()
         {
             string inputNumber = "*";
-            double convertedNumber = InputConverter.ConvertInputToNumeric(inputNumber);
+            double convertedNumber;
+            InputConverter.ConvertInputToNumeric(inputNumber, out convertedNumber);
             Assert.AreEqual(2, convertedNumber);
         }
     }

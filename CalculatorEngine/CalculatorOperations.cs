@@ -12,15 +12,6 @@ namespace CalculatorEngine
         {
             double result = 0;
 
-            if (argOperation == "+" || argOperation.ToLower() == "add")
-            {
-                result = argFirstNumber + argSecondNumber;
-            }
-            else if (argOperation == "-" || argOperation.ToLower() == "substract")
-            {
-                result = argFirstNumber - argSecondNumber;
-            }
-
             switch (argOperation.ToLower())
             {
                 case "+":
@@ -33,7 +24,15 @@ namespace CalculatorEngine
                     result = argFirstNumber - argSecondNumber;
                     break;
 
+                case "/":
+                case "divide":
+                    result = argFirstNumber / argSecondNumber;
+                    break;
 
+                case "*":
+                case "multuply":
+                    result = argFirstNumber * argSecondNumber;
+                    break;
             }
 
             return result;
