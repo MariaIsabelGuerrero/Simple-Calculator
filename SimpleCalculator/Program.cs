@@ -10,12 +10,12 @@ namespace SimpleCalculator
         {
             try
             {
-
                 double firstNumber = GetValidNumber("Enter the first number: ");
                 double secondNumber = GetValidNumber("Enter the second number: ");
                 string operation = GetValidOperation();
                 double result = CalculatorOperations.Calculate(operation, firstNumber, secondNumber);
                 Console.WriteLine($"Result: {result}");
+                //1 + 2 = result
             }
             catch (Exception ex)
             {
@@ -27,15 +27,16 @@ namespace SimpleCalculator
         static double GetValidNumber(string prompt)
         {
             double number = 0;
+            bool success;
             do {
                 Console.WriteLine(prompt);
                 string input = Console.ReadLine();
-                InputConverter.ConvertInputToNumeric(input, out number);
+                success = InputConverter.ConvertInputToNumeric(input, out number);
 
-                if (number == 0)
+                if (!success)
                     Console.WriteLine("Invalid input. Please enter a valid number.");
 
-            } while (number == 0);
+            } while (!success);
             return number;
         }
         static string GetValidOperation()
