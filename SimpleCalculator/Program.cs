@@ -17,7 +17,7 @@ namespace SimpleCalculator
                 string operation = GetValidOperation();
                 bool success = CalculatorOperations.Calculate(operation, firstNumber, secondNumber, out double result);
                 if (success)
-                    Console.WriteLine($"The result of {firstNumber} {operation} {secondNumber} = {result:.00}");
+                    Console.WriteLine($"The opperation {firstNumber} {operation} {secondNumber} equals {result:.00}");
                 else
                     Console.WriteLine($"The opperation {firstNumber} {operation} {secondNumber} doesn't work");
             }
