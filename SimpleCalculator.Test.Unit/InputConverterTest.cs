@@ -16,13 +16,12 @@ namespace SimpleCalculator.Test.Unit
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
         public void FailsToConvertsInvalidStringInputIntoDouble()
         {
             string inputNumber = "*";
-            double convertedNumber;
-            InputConverter.ConvertInputToNumeric(inputNumber, out convertedNumber);
-            Assert.AreEqual(2, convertedNumber);
+            bool success = InputConverter.ConvertInputToNumeric(inputNumber, out double convertedNumber);
+            Assert.AreEqual(0, convertedNumber);
+            Assert.IsFalse(success);
         }
     }
 }

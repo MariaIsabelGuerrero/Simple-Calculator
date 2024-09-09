@@ -15,11 +15,11 @@ namespace SimpleCalculator
                 double firstNumber = GetValidNumber("Enter the first number: ");
                 double secondNumber = GetValidNumber("Enter the second number: ");
                 string operation = GetValidOperation();
-                double result = CalculatorOperations.Calculate(operation, firstNumber, secondNumber);
-           
-                Console.WriteLine($"The result of {firstNumber} {operation} {secondNumber} = {result:.00}");
-                
-                //1 + 2 = result
+                bool success = CalculatorOperations.Calculate(operation, firstNumber, secondNumber, out double result);
+                if (success)
+                    Console.WriteLine($"The result of {firstNumber} {operation} {secondNumber} = {result:.00}");
+                else
+                    Console.WriteLine($"The opperation {firstNumber} {operation} {secondNumber} doesn't work");
             }
             catch (Exception ex)
             {

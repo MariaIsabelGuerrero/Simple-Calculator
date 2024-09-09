@@ -8,10 +8,8 @@ namespace CalculatorEngine
 {
     public static class CalculatorOperations
     {
-        public static double Calculate(string argOperation, double argFirstNumber, double argSecondNumber)
+        public static bool Calculate(string argOperation, double argFirstNumber, double argSecondNumber, out double result)
         {
-            double result = 0;
-
             switch (argOperation.ToLower())
             {
                 case "+":
@@ -20,22 +18,29 @@ namespace CalculatorEngine
                     break;
 
                 case "-":
-                case "substract":
+                case "subtract":
                     result = argFirstNumber - argSecondNumber;
                     break;
 
                 case "/":
                 case "divide":
-                    result = argFirstNumber / argSecondNumber;
+                    if (argSecondNumber != 0)
+                        result = argFirstNumber / argSecondNumber;
+                    else {
+                        result = 0;
+                        return false;
+                    }
                     break;
 
                 case "*":
-                case "multuply":
+                case "multiply":
                     result = argFirstNumber * argSecondNumber;
                     break;
+                default:
+                    result = 0;
+                    return false;
             }
-
-            return result;
+            return true;
         }
     }
 }
