@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using CalculatorEngine;
 
 
@@ -10,11 +11,14 @@ namespace SimpleCalculator
         {
             try
             {
+
                 double firstNumber = GetValidNumber("Enter the first number: ");
                 double secondNumber = GetValidNumber("Enter the second number: ");
                 string operation = GetValidOperation();
                 double result = CalculatorOperations.Calculate(operation, firstNumber, secondNumber);
-                Console.WriteLine($"Result: {result}");
+           
+                Console.WriteLine($"The result of {firstNumber} {operation} {secondNumber} = {result:.00}");
+                
                 //1 + 2 = result
             }
             catch (Exception ex)
@@ -62,7 +66,11 @@ namespace SimpleCalculator
             return operation == "+" || operation == "add" ||
                 operation == "-" || operation == "subtract" ||
                 operation == "*" || operation == "multiply" ||
-                operation == "/" || operation== "divide";
+                operation == "/" || operation == "divide";
+        }
+        
+            
+    
         }
     }
-}
+
