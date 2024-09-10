@@ -36,6 +36,12 @@ namespace CalculatorEngine
                 case "multiply":
                     result = argFirstNumber * argSecondNumber;
                     break;
+
+                case "^":
+                case "pow":
+                    result = Math.Pow(argFirstNumber, argSecondNumber);
+                    break;
+
                 default:
                     result = 0;
                     return false;

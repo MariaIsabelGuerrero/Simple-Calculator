@@ -88,5 +88,23 @@ namespace SimpleCalculator.Test.Unit
             Assert.AreEqual(0, result);
             Assert.IsFalse(success);
         }
+
+        [TestMethod]
+        public void PowTwoNumbersAndReturnsValidResultForNonSymbolOpertion()
+        {
+            int number1 = 4;
+            int number2 = 2;
+            CalculatorOperations.Calculate("pow", number1, number2, out double result);
+            Assert.AreEqual(16, result);
+        }
+
+        [TestMethod]
+        public void PowTwoNumbersAndReturnsValidResultForSymbolOpertion()
+        {
+            int number1 = 4;
+            int number2 = 2;
+            CalculatorOperations.Calculate("^", number1, number2, out double result);
+            Assert.AreEqual(16, result);
+        }
     }
 }

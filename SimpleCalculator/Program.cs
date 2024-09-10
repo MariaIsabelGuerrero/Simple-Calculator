@@ -17,9 +17,9 @@ namespace SimpleCalculator
                 string operation = GetValidOperation();
                 bool success = CalculatorOperations.Calculate(operation, firstNumber, secondNumber, out double result);
                 if (success)
-                    Console.WriteLine($"The opperation {firstNumber} {operation} {secondNumber} equals {result:.00}");
+                    Console.WriteLine($"The result of the opperation {firstNumber} {operation} {secondNumber} is {result:.00}");
                 else
-                    Console.WriteLine($"The opperation {firstNumber} {operation} {secondNumber} doesn't work");
+                    Console.WriteLine($"The opperation {firstNumber} {operation} {secondNumber} is invalid");
             }
             catch (Exception ex)
             {
@@ -58,7 +58,7 @@ namespace SimpleCalculator
                 Console.WriteLine("- or subtract for subtraction");
                 Console.WriteLine("* or multiply for multiplcation");
                 Console.WriteLine("/ or divide for division");
-
+                Console.WriteLine("^ or pow for exponents");
             }
         }
         static bool IsValidOperation(string operation)
@@ -66,7 +66,8 @@ namespace SimpleCalculator
             return operation == "+" || operation == "add" ||
                 operation == "-" || operation == "subtract" ||
                 operation == "*" || operation == "multiply" ||
-                operation == "/" || operation == "divide";
+                operation == "/" || operation == "divide" ||
+                operation == "^" || operation == "pow";
         }
         
             
