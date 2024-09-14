@@ -1,10 +1,10 @@
 ## Changes 
 
-- Made the convertion class static
-- Made CalulatorEngine a library
-- Added a sub operation to CalculatorEngine
-- Added a Readme
+- Made the convertion class static (Louis)
+- Made CalulatorEngine a library (Louis)
+- Added a extra operation to CalculatorEngine & 2 tests per extra operation (Louis)
+- Added a Readme (Louis)
 - Made the program ask for the input and the operator(maria)
-- Display a "help text" for both (maria)
-- Display the result in a human readable format (maria)
-  
+- Added input validation (maria)
+- Displayed a "help text" for both (maria)
+- Displayed the result in a human readable format (maria)
