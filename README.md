@@ -1,97 +1,103 @@
-# 🧮 SimpleCalculator — Kotlin Android App
+# 🧮 SimpleCalculator — .NET (C#) Console Solution
 
-A **mobile app project written fully in Kotlin**, organized with **Gradle**.  
-This repository contains the app module, build scripts, and configurations. It demonstrates core Android development concepts such as layouts, user input handling, and simple data validation.
+A **.NET Framework 4.7.2** console application written in **C#**, organized as a Visual Studio solution with a separate **CalculatorEngine** class library and **MSTest** unit tests.  
+This repository demonstrates clean separation of concerns, input validation, and TDD-style unit testing for a simple calculator.
 
 ---
 
 ## 🌟 Overview
 
-**SimpleCalculator** is a lightweight Android application built to perform basic arithmetic operations.  
-It serves as a beginner-friendly project designed to introduce Kotlin syntax, Android Studio structure, and Jetpack best practices.
+The app reads two numbers and an operation from the console, validates inputs, performs the calculation, and prints a human‑readable result.  
+Supported operators: **`+`**, **`-`**, **`*`**, **`/`**, **`^`** (power).  
+Input parsing and arithmetic are encapsulated in reusable components.
 
 ---
 
-## 🚀 Features
+## 🧩 Solution Structure
 
-- ➕ Addition  
-- ➖ Subtraction  
-- ✖️ Multiplication  
-- ➗ Division  
-- 🧩 Input validation to prevent division by zero  
-- 🧮 Real-time calculation display  
-- 🔄 Clear button to reset inputs and results  
+```
+N33-LA-SimpleCalculator-Starter/
+├── SimpleCalculator.sln                 # Visual Studio solution
+├── SimpleCalculator/                    # Console app (startup project)
+│   ├── Program.cs                       # Console UI / flow
+│   ├── InputConverter.cs                # string → double conversion with validation
+│   └── App.config
+├── CalculatorEngine/                    # Class library
+│   ├── CalculatorEngine.csproj
+│   └── CalculatorOperations.cs          # Core operations (+, -, *, /, ^)
+└── SimpleCalculator.Test.Unit/          # Unit tests (MSTest)
+    ├── SimpleCalculator.Test.Unit.csproj
+    ├── InputConverterTest.cs            # Conversion tests (valid / invalid)
+    └── CalculatorEngineTest.cs          # Operation tests (incl. power '^')
+```
 
 ---
 
 ## 🛠 Tech Stack
 
 | Component | Technology |
-|------------|-------------|
-| **Language** | Kotlin |
-| **UI** | XML Layouts / Jetpack Compose (if applicable) |
-| **Architecture** | MVVM (Model-View-ViewModel) |
-| **Build Tool** | Gradle |
-| **IDE** | Android Studio |
-| **Min SDK** | 24 (Android 7.0) |
-| **Target SDK** | 35 |
+|-----------|------------|
+| **Language** | C# |
+| **Target Framework** | .NET Framework **4.7.2** |
+| **IDE** | Visual Studio 2019/2022 (Windows) |
+| **Unit Tests** | MSTest (TestAdapter 2.x) |
+| **Project Type** | Console App + Class Library |
+
+> ℹ️ Because this targets **.NET Framework 4.7.2**, building on macOS/Linux requires Mono/MSBuild and is not officially supported. For cross‑platform CLI builds, consider retargeting to **.NET 8**.
 
 ---
 
-## 📦 Installation
+## 📦 Getting Started (Visual Studio)
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/MariaIsabelGuerrero/SimpleCalculator-Starter.git
+1. **Open the solution**
+   ```text
+   SimpleCalculator.sln
    ```
-
-2. **Open** the project in **Android Studio**
-
-3. **Sync Gradle** to install dependencies
-
-4. **Run** the app on an emulator or a physical Android device
+2. In **Solution Explorer**, right‑click the solution → **Restore NuGet Packages** (if prompted).
+3. Set **SimpleCalculator** as the **Startup Project**.
+4. Press **F5** (Run) or **Ctrl+F5** (Run without Debugging).
 
 ---
 
-## 📐 Project Structure
+## ▶️ Usage (Console Flow)
 
 ```
-SimpleCalculator/
-├── app/
-│   ├── src/
-│   │   ├── main/
-│   │   │   ├── java/           # Kotlin source files
-│   │   │   ├── res/            # Layouts, drawables, strings
-│   │   │   └── AndroidManifest.xml
-│   │   └── test/               # Unit tests (if applicable)
-│   └── build.gradle            # App-level Gradle config
-├── build.gradle                 # Project-level Gradle config
-└── settings.gradle              # Includes modules
+Enter the first number: 5
+Enter operation (+, -, *, /, ^): ^
+Enter the second number: 3
+
+Result: 5 ^ 3 = 125
 ```
 
----
-
-## 🧠 How It Works
-
-1. The user enters two numbers.  
-2. Selects an operation (+, −, ×, ÷).  
-3. The app performs the operation using Kotlin logic and displays the result.  
-4. A clear button resets the fields for a new calculation.
+Built‑in safeguards include numeric validation and basic error reporting (e.g., preventing invalid inputs).
 
 ---
 
-## 🧪 Testing
+## 🧪 Running Tests
 
-If the project includes test cases, run them with:
-```bash
-./gradlew test
+### Visual Studio (recommended)
+- Open **Test Explorer** → **Run All Tests**
+
+### MSTest console (if installed)
+```bat
+vstest.console.exe SimpleCalculator.Test.Unit\bin\Debug\SimpleCalculator.Test.Unit.dll
 ```
 
-Reports will appear under `app/build/reports/tests/`.
+Tests cover:
+- `InputConverter` success & failure cases (e.g., non‑numeric input)
+- `CalculatorOperations` arithmetic (+, −, ×, ÷, **power**)
 
 ---
 
-## 🤝 Contributing
+## 🧠 Design Notes
 
-Contributions are always welcome!
+- **Single Responsibility:** `InputConverter` handles parsing; `CalculatorOperations` performs math.  
+- **Testability:** Core logic lives in a class library and is unit‑tested.  
+- **Extensibility:** New operations (e.g., modulus, sqrt) can be added as new cases in `CalculatorOperations` with accompanying tests.
 
+---
+
+## 🔧 Common Tasks
+
+- **Change target framework:** Right‑click project → **Properties** → **Application** → **Target framework**.  
+- **Add a new operation:** Add a new `case` in `CalculatorOperations.Calculate(...)`, then add tests to `CalculatorEngineTest.cs`.
